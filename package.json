@@ -1,0 +1,47 @@
+{
+  "name": "tsbuilder",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "typetest": "vitest typecheck"
+  },
+  "main": "./dist/tsbuilder.umd.cjs",
+  "module": "./dist/tsbuilder.js",
+  "types": "./dist/tsbuilder.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/tsbuilder.js",
+      "require": "./dist/tsbuilder.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "Martijn Arts (martijnarts.com)",
+  "license": "EUPL-1.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martijnarts/tsbuilder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martijnarts/tsbuilder/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-standard-with-typescript": "^39.1.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "vite-plugin-dts": "^3.6.0",
+    "vitest": "^0.34.6"
+  }
+}
