@@ -1,49 +1,11 @@
-function capitalizeFirstLetter<S extends string>(string: S): Capitalize<S> {
-  return (string.charAt(0).toUpperCase() + string.slice(1)) as Capitalize<S>;
-}
-
-export const Build = Symbol("Build");
-
-type ISetters<Data, Output> = {
-  [Key in keyof Data as `set${Capitalize<string & Key>}`]-?: (
-    arg: Data[Key]
-  ) => IIntermediateBuilder<Data, Output>;
-};
-
-type IGetters<Data> = {
-  [Key in keyof Data]-?: () => Data[Key];
-};
-
-type IIntermediateBuilder<Data, Output> = ISetters<Data, Output> &
-  IGetters<Data> & {
-    [Build]: () => { result: Output; finalData: Data };
-  };
-
-type ITSBuilder<
-  Data,
-  Output = Data,
-  RequiredKeys extends keyof Data = keyof Data,
-  Intermediate = { [Key in Exclude<keyof Data, RequiredKeys>]: Data[Key] }
-> = {
-  [Key in keyof Data as `set${Capitalize<string & Key>}`]-?: (
-    arg: Data[Key]
-  ) => ITSBuilder<
-    Data,
-    Output,
-    RequiredKeys,
-    Intermediate & Record<Key, Data[Key]>
-  >;
-} & {
-  [Key in keyof Data]-?: () => Data[Key];
-} & {
-  [Build]: Intermediate extends Data
-    ? () => { result: Output; finalData: Data }
-    : never;
-};
-
-export type ITSBuilderTemplate<Data, RequiredKeys extends keyof Data> = {
-  [Key in keyof Data]: Key extends RequiredKeys ? null : () => Data[Key];
-};
+import { Build } from "./const";
+import {
+  ITSBuilder,
+  IIntermediateBuilder,
+  ISetters,
+  ITSBuilderTemplate,
+} from "./types";
+import { capitalizeFirstLetter } from "./util";
 
 const innerBuilder = <
   Data extends object,
@@ -90,7 +52,16 @@ const innerBuilder = <
 };
 
 /**
- * Create a StrictBuilder for an interface. Returned objects will be untyped.
+ * A function that creates a type-safe builder for TypeScript objects.
+ *
+ * @template Data - The type of the object being built.
+ * @template Output - The type of the object returned by the builder.
+ * @template RequiredKeys - The keys of the object that do not have a default value set in the template.
+ *
+ * @param template - The template object that defines the shape of the object being built. Any optional keys must have a function that returns a value of the correct type.
+ * @param buildFunc - An optional function that transforms the input object before returning it.
+ *
+ * @returns A type-safe builder object that can be used to construct objects of type `Data`.
  */
 export function TSBuilder<
   const Data extends object,
@@ -107,3 +78,5 @@ export function TSBuilder<
     buildFunc
   ) as ITSBuilder<Data, Output, RequiredKeys>;
 }
+
+export { Build } from "./const";
