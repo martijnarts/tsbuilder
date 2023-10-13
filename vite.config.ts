@@ -9,10 +9,9 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "tsbuilder",
-      fileName: "tsbuilder",
     },
   },
-  plugins: [dts()],
+  plugins: [dts({ rollupTypes: true })],
   test: {
     typecheck: {
       include: ["src/**/*.test.ts"],
