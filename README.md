@@ -16,11 +16,12 @@ $ pnpm i -S @totempaaltj/tsbuilder
 $ yarn add @totempaaltj/tsbuilder
 ```
 
-Examples are tested with [vite-plugin-doctest][doctest], which require a weird import syntax. Instead, you probably want to use:
-
-```typescript
-import { TSBuilder, Build } from "@totempaaltj/tsbuilder";
-```
+> [!NOTE]
+> Examples are tested with [vite-plugin-doctest][doctest], which require a weird import syntax. Instead, you probably want to use:
+>
+> ```typescript
+> import { TSBuilder, Build } from "@totempaaltj/tsbuilder";
+> ```
 
 [doctest]: https://github.com/ssssota/doc-vitest
 
