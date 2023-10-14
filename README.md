@@ -1,7 +1,6 @@
 # TSBuilder
 
-<img alt="npm (scoped)" src="https://img.shields.io/npm/v/%40totempaaltj/tsbuilder">
-<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/martijnarts/tsbuilder/test.yaml">
+<img alt="npm (scoped)" src="https://img.shields.io/npm/v/%40totempaaltj/tsbuilder"> <img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/martijnarts/tsbuilder/test.yaml">
 
 Strict builder pattern in Typescript. Based loosely on [builder-pattern][builder-pattern]'s StrictBuilder.
 
