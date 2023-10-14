@@ -38,6 +38,9 @@ devDependencies:
   vite:
     specifier: ^4.4.11
     version: 4.4.11(@types/node@20.8.3)
+  vite-plugin-doctest:
+    specifier: ^0.1.1
+    version: 0.1.1(@types/node@20.8.3)
   vite-plugin-dts:
     specifier: ^3.6.0
     version: 3.6.0(@types/node@20.8.3)(typescript@5.2.2)(vite@4.4.11)
@@ -2579,6 +2582,22 @@ packages:
       - stylus
       - sugarss
       - supports-color
+      - terser
+    dev: true
+
+  /vite-plugin-doctest@0.1.1(@types/node@20.8.3):
+    resolution: {integrity: sha512-LgTLW490CYUZE5zabfAqilGEouiJ4hcflwdF4JqqeWqzpsvkZFReKVj0/kXYqYQGAU3D9TqO7LJD9+P/aEq/Uw==}
+    dependencies:
+      '@babel/parser': 7.23.0
+      magic-string: 0.30.4
+      vite: 4.4.11(@types/node@20.8.3)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
       - terser
     dev: true
 

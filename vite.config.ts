@@ -3,6 +3,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { doctest } from "vite-plugin-doctest";
 
 export default defineConfig({
   build: {
@@ -11,8 +12,9 @@ export default defineConfig({
       name: "tsbuilder",
     },
   },
-  plugins: [dts({ rollupTypes: true })],
+  plugins: [dts({ rollupTypes: true }), doctest()],
   test: {
+    includeSource: ["./src/**/*.test.ts", "./README.md"],
     typecheck: {
       include: ["src/**/*.test.ts"],
     },
